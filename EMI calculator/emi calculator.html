@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>emi calculator</title>
     <link rel="stylesheet" href="emi calculator.css">
+    <script src="emi calculator.js"></script>
 </head>
 <body>
-    <div class="main_div">
-        <nav class="nav">
-            <div class="nav_logo">
+    <div class="head">
+        <header>
+            <nav class="nav">
                 <h1>EMI CALCULATORS</h1>
-            </div>
-        </nav>
-        <div>
+            </nav>
+        </header>
+    </div>
+    <div class="main_div">
             <div class="cal_div">
                 <div class="cal_info_head">
                     <h1>EMI Calculators</h1>
@@ -28,15 +30,132 @@
                     <div class="lec">
                         <div class="amount">
                             <label for="Personal_Loan_Amount">Loan Amount(&#8377;)</label>
-                            <input type="number" id="Personal_Loan_Amount" value="30000" class="input_field">
+                            <input type="number" id="Personal_Loan_Amount" value="50000" class="input_field" min="50000" max="4000000" step="25000" onchange="PersonalLoanAmountChanged()">
                         </div>
+                        <div class="range">
+                            <input type="range" id="Personal_Loan_Amount_Range" value="50000" class="range_input" min="50000" max="4000000" step="25000" onchange="PersonalLoanAmountRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>50K</span>
+                                <span>40L</span>
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <label for="Personal_Loan_IR">Interesr Rate(p.a)</label>
+                            <input type="number" id="Personal_Loan_IR" value="11.25" class="input_field" min="11.25" max="22" step="0.25" onchange="PersonalLoanIRChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Personal_Loan_IR_Range" value="11.25" class="range_input" min="11.25" max="22" step="0.25" onchange="PersonalLoanIRRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>11.25%</span>
+                                <span>22%</span>
+                            </div>                            
+                        </div>
+                        <div class="amount">
+                            <label for="Personal_Loan_Tenure">Tenure(years)</label>
+                            <input type="number" id="Personal_Loan_Tenure" class="input_field" value="1" min="1" max="7" step="1" onchange="PersonalLoanTenureChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Personal_Loan_Tenure_Range" value="1" class="range_input" min="1" max="7" step="1" onchange="PersonalLoanTenureRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>1</span>
+                                <span>7</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="monthly_installment">
+                        <div class="center"><h3>Equated Monthly Installments</h3></div>
+                        <div class="center"><h3>(EMI)</h3></div>
+                        <div class="result"><h2><span>&#8377;</span><span id="plmi">4425</span></h2></div>
+                        <div class="center"><button onclick="PersonalLoanEMICalculatorResult()">Calculate</button></div>
                     </div>
                 </div>
                 <div>
                     <div class="calc_heads"><h2>Home Loan EMI Calculator</h2></div>
+                    <div class="lec">
+                        <div class="amount">
+                            <label for="Home_Loan_Amount">Loan Amount(&#8377;)</label>
+                            <input type="number" id="Home_Loan_Amount" value="300000" class="input_field" min="300000" max="50000000" step="100000" onchange="HomeLoanAmountChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Home_Loan_Amount_Range" value="300000" class="range_input" min="300000" max="50000000" step="100000" onchange="HomeLoanAmountRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>3L</span>
+                                <span>5Cr</span>
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <label for="Home_Loan_IR">Interesr Rate(p.a)</label>
+                            <input type="number" id="Home_Loan_IR" value="8.75" class="input_field" min="8.75"Home" step="0.25" onchange="HomeLoanIRChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Home_Loan_IR_Range" value="8.75" class="range_input" min="8.75" max="11" step="0.25" onchange="HomeLoanIRRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>8.75%</span>
+                                <span>11%</span>
+                            </div>                            
+                        </div>
+                        <div class="amount">
+                            <label for="Home_Loan_Tenure">Tenure(years)</label>
+                            <input type="number" id="Home_Loan_Tenure" class="input_field" value="1" min="1" max="30" step="1" onchange="HomeLoanTenureChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Home_Loan_Tenure_Range" value="1" class="range_input" min="1" max="30" step="1" onchange="HomeLoanTenureRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>1</span>
+                                <span>30</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="monthly_installment">
+                        <div class="center"><h3>Equated Monthly Installments</h3></div>
+                        <div class="center"><h3>(EMI)</h3></div>
+                        <div class="result"><h2><span>&#8377;</span><span id="hlmi">26201</span></h2></div>
+                        <div class="center"><button onclick="HomeLoanEMICalculatorResult()">Calculate</button></div>
+                    </div>
                 </div>
                 <div>
                     <div class="calc_heads"><h2>Car Loan Emi Emi calculator</h2></div>
+                    <div class="lec">
+                        <div class="amount">
+                            <label for="Car_Loan_Amount">Loan Amount(&#8377;)</label>
+                            <input type="number" id="Car_Loan_Amount" value="100000" class="input_field" min="100000" max="10000000" step="100000" onchange="CarLoanAmountChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Car_Loan_Amount_Range" value="100000" class="range_input" min="100000" max="10000000" step="100000" onchange="CarLoanAmountRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>1L</span>
+                                <span>1Cr</span>
+                            </div>
+                        </div>
+                        <div class="amount">
+                            <label for="Car_Loan_IR">Interesr Rate(p.a)</label>
+                            <input type="number" id="Car_Loan_IR" value="7" class="input_field" min="7" max="17.5" step="0.25" onchange="CarLoanIRChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Car_Loan_IR_Range" value="7" class="range_input" min="7" max="17.5" step="0.25" onchange="CarLoanIRRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>7%</span>
+                                <span>17.5%</span>
+                            </div>                            
+                        </div>
+                        <div class="amount">
+                            <label for="Car_Loan_Tenure">Tenure(years)</label>
+                            <input type="number" id="Car_Loan_Tenure" class="input_field" value="1" min="1" max="7" step="1" onchange="CarLoanTenureChanged()">
+                        </div>
+                        <div class="range">
+                            <input type="range" id="Car_Loan_Tenure_Range" value="1" class="range_input" min="1" max="7" step="1" onchange="CarLoanTenureRangeChanged()">
+                            <div class="Loan_Range">
+                                <span>1</span>
+                                <span>7</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="monthly_installment">
+                        <div class="center"><h3>Equated Monthly Installments</h3></div>
+                        <div class="center"><h3>(EMI)</h3></div>
+                        <div class="result"><h2><span>&#8377;</span><span id="clmi">8653</span></h2></div>
+                        <div class="center"><button onclick="CarLoanEMICalculatorResult()">Calculate</button></div>
+                    </div>
                 </div>
             </div>
         </div>

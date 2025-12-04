@@ -4,8 +4,12 @@
     font-family: 'Arial',sans-serif;
 }
 .main_div{
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    overflow: hidden;
+}
+.head{
+    position: sticky;
+    top: 0;
 }
 .nav{
     height: 40px;
@@ -38,16 +42,54 @@
     color: #ae275f;
 }
 .lec{
-    border: 1px solid gray;
+    border: 1px solid rgba(242, 237, 237, 0.605);
     padding: 15px 20px 20px 10px;
 }
 .amount{
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
 }
 .input_field{
-    width: 80px;
+    height: 25px;
+    width: 120px;
     border: 1px solid gray;
-    border-radius: 5%;
+    border-radius: 5px;
     color: #ae275f;
+    font-weight: bold;
+}
+.range{
+    margin: 15px 0px 15px 0px;
+}
+.range_input{
+    width: 100%;
+    accent-color:#ae275f;
+}
+.Loan_Range{
+    display: flex;
+    justify-content: space-between;
+}
+.monthly_installment{
+    padding: 20px;
+    background-color: #e0e0ef;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ae275f;
+}
+button{
+    border-radius: 10px;
+    width: 100%;
+    height: 35px;
+    background-color: #ae275f;
+    color: white;
+    font-weight: bolder;
 }
